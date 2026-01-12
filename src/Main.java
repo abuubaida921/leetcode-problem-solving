@@ -1,13 +1,13 @@
 public class Main {
     public static void main(String[] args) {
-        int[] myArray = {0,1,2,2,3,0,4,2};
-        int val = 2;
+        int[] myArray = {1,3,5,6};
+        int target = 5;
 
         Solution solution = new Solution();
-        int k = solution.removeElement(myArray,val);
+        int k = solution.searchInsert(myArray,target);
 
         System.out.println("" + k);
-        System.out.print("Array after removing duplicates: ");
+        System.out.print("Final Array: ");
         for (int i = 0; i < k; i++) {
             System.out.print(myArray[i] + " ");
         }
@@ -15,17 +15,13 @@ public class Main {
 }
 
 class Solution {
-    public int removeElement(int[] nums, int val) {
-        int i =0;
-        int n = nums.length;
-        while(i<n){
-            if(nums[i] == val){
-                nums[i]=nums[n-1];
-                n--;
-            }else{
-                i++;
+    public int searchInsert(int[] nums, int target) {
+        int postion = 0;
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] < target){
+                postion = i + 1;
             }
         }
-        return n;
+        return postion;
     }
 }
