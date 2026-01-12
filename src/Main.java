@@ -1,11 +1,12 @@
 public class Main {
     public static void main(String[] args) {
-        int[] myArray = {0,0,1,1,1,2,2,3,3,4};
+        int[] myArray = {0,1,2,2,3,0,4,2};
+        int val = 2;
 
         Solution solution = new Solution();
-        int k = solution.removeDuplicates(myArray);
+        int k = solution.removeElement(myArray,val);
 
-        System.out.println("Unique count: " + k);
+        System.out.println("" + k);
         System.out.print("Array after removing duplicates: ");
         for (int i = 0; i < k; i++) {
             System.out.print(myArray[i] + " ");
@@ -14,17 +15,17 @@ public class Main {
 }
 
 class Solution {
-    public int removeDuplicates(int[] nums) {
-        if (nums.length == 0) return 0;
-
-        int uniqueIndex = 1;
-
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] != nums[uniqueIndex - 1]) {
-                nums[uniqueIndex] = nums[i];
-                uniqueIndex++;
+    public int removeElement(int[] nums, int val) {
+        int i =0;
+        int n = nums.length;
+        while(i<n){
+            if(nums[i] == val){
+                nums[i]=nums[n-1];
+                n--;
+            }else{
+                i++;
             }
         }
-        return uniqueIndex;
+        return n;
     }
 }
